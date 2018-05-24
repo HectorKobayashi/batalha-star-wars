@@ -1,0 +1,49 @@
+public class Lutador extends Habilidade{
+	private int hp = 100;
+	private int dominioForca=20;
+	private int dominioSabre=50;
+	
+		
+	public int getHp() {
+		return hp;
+	}
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+	public int getDominioForca() {
+		return dominioForca;
+	}
+	public void setDominioForca(int dominioForca) {
+		this.dominioForca = dominioForca;
+	}
+	public int getDominioSabre() {
+		return dominioSabre;
+	}
+	public void setDominioSabre(int dominioSabre) {
+		this.dominioSabre = dominioSabre;
+	}
+	
+	
+	
+	Lutador(int life, int mp, int ap){
+		life=hp;
+		mp=dominioForca;
+		ap=dominioSabre;
+	}
+	
+	void action(Lutador enemy) {
+		if(this.getPrioridade()== 0 || this.getPrioridade() == 1) {
+			this.setDominioSabre(this.getDominioSabre() - this.getGasto());
+			enemy.setHp(enemy.getHp() - this.getDano());		
+		}
+		if(this.getPrioridade()== 3) {
+			this.setDominioForca(this.getDominioForca() - this.getGasto());
+			enemy.setHp(enemy.getHp() - this.getDano());
+		}
+		
+		else
+			return;
+		
+	}
+	
+}
