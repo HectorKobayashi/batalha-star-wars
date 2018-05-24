@@ -1,0 +1,48 @@
+public class Simulador {
+	
+	
+	void turno(Lutador a, Lutador b) {
+			
+		if(a.getPrioridade() > b.getPrioridade()) {//se a prioridade do player A eh maior do que B, A faz acao primeira
+			a.action(b);
+			if(a.getPrioridade()==2) {// Se A esquiva B gasta dominio de sabre sem causar dano
+				b.setDominioSabre(b.getDominioSabre() - b.getGasto());
+				return;
+			}
+			if(b.getHp()<=0) {// se B morre pelo ataque de A
+				System.out.println(" a luta acabou");
+				return;
+			}			
+			else//se nenhum dos casos, B executa acao
+				b.action(a);
+		}
+		
+		if( b.getPrioridade() > a.getPrioridade()) {//a analogo ao caso de cima 
+			b.action(a);
+			if(b.getPrioridade()==2) {
+				a.setDominioSabre(a.getDominioSabre() - a.getGasto());
+				return;
+			}
+			if(a.getHp()<=0) {
+				System.out.println(" a luta acabou");
+				return;
+			}		
+			else
+				a.action(b);
+		}
+		
+		else {
+			a.action(b);
+			if(b.getHp()<=0) {// se B morre pelo ataque de A
+				System.out.println(" a luta acabou");
+				return;
+			}			
+			b.action(a);
+			if(a.getHp()<=0) {//se A morre pelo ataque de B
+				System.out.println(" a luta acabou");
+		
+			}		
+		}
+		
+	}
+}
